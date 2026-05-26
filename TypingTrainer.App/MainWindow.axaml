@@ -14,11 +14,23 @@
                 Padding="20" 
                 CornerRadius="10" 
                 MaxWidth="700">
-            <TextBlock Text="{Binding LessonText}" 
-                       FontSize="24" 
-                       FontWeight="Bold" 
-                       Foreground="#E0E0E0" 
-                       TextWrapping="Wrap"/>
+            <ItemsControl ItemsSource="{Binding CharacterItems}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding CharValue}" 
+                                   FontSize="24" 
+                                   FontWeight="Bold"
+                                   Foreground="{Binding Color}"
+                                   TextDecorations="{Binding Decoration}"
+                                   Width="{Binding Width}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </Border>
 
         <Grid ColumnDefinitions="*,*" Margin="0,10">
