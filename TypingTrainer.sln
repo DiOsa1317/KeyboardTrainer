@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypingTrainer.App", "TypingTrainer.App\TypingTrainer.App.csproj", "{4093CD28-5A15-4B29-AD83-78CA0623703B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypingTrainer.Core", "TypingTrainer.Core\TypingTrainer.Core.csproj", "{8FF3F61F-9A11-408B-9BFF-AB9EF57893FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypingTrainer.Data", "TypingTrainer.Data\TypingTrainer.Data.csproj", "{229BFCFA-ABA2-45ED-806D-7C405E719473}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4093CD28-5A15-4B29-AD83-78CA0623703B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4093CD28-5A15-4B29-AD83-78CA0623703B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4093CD28-5A15-4B29-AD83-78CA0623703B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4093CD28-5A15-4B29-AD83-78CA0623703B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FF3F61F-9A11-408B-9BFF-AB9EF57893FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FF3F61F-9A11-408B-9BFF-AB9EF57893FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FF3F61F-9A11-408B-9BFF-AB9EF57893FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FF3F61F-9A11-408B-9BFF-AB9EF57893FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{229BFCFA-ABA2-45ED-806D-7C405E719473}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{229BFCFA-ABA2-45ED-806D-7C405E719473}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{229BFCFA-ABA2-45ED-806D-7C405E719473}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{229BFCFA-ABA2-45ED-806D-7C405E719473}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

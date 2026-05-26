@@ -1,0 +1,35 @@
+<Window x:Class="TypingTrainer.App.MainWindow"
+        xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:TypingTrainer.App.ViewModels"
+        x:DataType="vm:MainViewModel"
+        Title="Typing Trainer" Width="850" Height="500"
+        Focusable="True" TextInput="OnTextInput" KeyDown="OnKeyDown"
+        Background="#121212">
+        
+    <StackPanel Margin="40" Spacing="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Text="Наберите текст:" FontSize="14" Foreground="#888888"/>
+    
+        <Border Background="#1E1E1E" 
+                Padding="20" 
+                CornerRadius="10" 
+                MaxWidth="700">
+            <TextBlock Text="{Binding LessonText}" 
+                       FontSize="24" 
+                       FontWeight="Bold" 
+                       Foreground="#E0E0E0" 
+                       TextWrapping="Wrap"/>
+        </Border>
+
+        <Grid ColumnDefinitions="*,*" Margin="0,10">
+            <TextBlock Grid.Column="0" Text="{Binding Wpm, StringFormat='⚡ WPM: {0:F1}'}" FontSize="22" Foreground="#4FC3F7"/>
+            <TextBlock Grid.Column="1" Text="{Binding Accuracy, StringFormat='🎯 Точность: {0:F1}%'}" 
+                       HorizontalAlignment="Right" FontSize="22" Foreground="#81C784"/>
+        </Grid>
+
+        <TextBlock Text="{Binding Status}" Foreground="#BDBDBD" Margin="0,5"/>
+    
+        <Button Content="🔄 Рестарт (ESC)" Command="{Binding RestartCommand}" 
+                HorizontalAlignment="Left" Width="180" Padding="10"/>
+    </StackPanel>
+</Window>
