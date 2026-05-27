@@ -21,10 +21,19 @@ public class PostgresStatsRepository(string connectionString) : IStatsRepository
     {
         using var connection = new NpgsqlConnection(_connectionString);
         return ( await connection.QueryAsync<SessionStatistics>(
-                @"SELECT id, wpm. accuracy, duration_sec, created_at
+                @"SELECT id, wpm, accuracy, duration_sec, created_at
                     FROM typing_sessions
-                    ORDER BY created_at DESC LIMIT @Count",
+                    ORDER BY created_at DESC 
+                    LIMIT @Count",
                 new {Count = count}))
             .ToList();
+    }
+
+    public async Task<IReadOnlyList<Lesson>> GetAllLessonsAsync()
+    {
+        using var connection = new NpgsqlConnection(_connectionString);
+        var sql = "SELECT id, title, content, language FROM lessons ORDER BY id";
+        var lessons = await connection.QueryAsync<Lesson>(sql);
+        return lessons.ToList();
     }
 }

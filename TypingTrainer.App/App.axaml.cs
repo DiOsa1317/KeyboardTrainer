@@ -33,7 +33,7 @@ public partial class App : Application
             .Build();
 
         var vm = host.Services.GetRequiredService<MainViewModel>();
-        vm.Initialize();
+        _ = vm.InitializeAsync();
 
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {

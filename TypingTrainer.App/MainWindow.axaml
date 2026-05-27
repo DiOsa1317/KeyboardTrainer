@@ -2,18 +2,33 @@
         xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:TypingTrainer.App.ViewModels"
+        xmlns:core="clr-namespace:TypingTrainer.Core;assembly=TypingTrainer.Core"
         x:DataType="vm:MainViewModel"
         Title="Typing Trainer" Width="850" Height="500"
         Focusable="True" TextInput="OnTextInput" KeyDown="OnKeyDown"
         Background="#121212">
         
     <StackPanel Margin="40" Spacing="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+        
+        <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Left">
+            <TextBlock Text="Выбор текста:" VerticalAlignment="Center" Foreground="#888888"/>
+            <ComboBox ItemsSource="{Binding Lessons}" 
+                      SelectedItem="{Binding SelectedLesson}" 
+                      Width="300">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate x:DataType="core:Lesson">
+                        <TextBlock Text="{Binding Title}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+        
         <TextBlock Text="Наберите текст:" FontSize="14" Foreground="#888888"/>
     
         <Border Background="#1E1E1E" 
                 Padding="20" 
                 CornerRadius="10" 
-                MaxWidth="700">
+                MaxWidth="1600">
             <ItemsControl ItemsSource="{Binding CharacterItems}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -34,14 +49,14 @@
         </Border>
 
         <Grid ColumnDefinitions="*,*" Margin="0,10">
-            <TextBlock Grid.Column="0" Text="{Binding Wpm, StringFormat='⚡ WPM: {0:F1}'}" FontSize="22" Foreground="#4FC3F7"/>
-            <TextBlock Grid.Column="1" Text="{Binding Accuracy, StringFormat='🎯 Точность: {0:F1}%'}" 
+            <TextBlock Grid.Column="0" Text="{Binding Wpm, StringFormat='WPM: {0:F1}'}" FontSize="22" Foreground="#4FC3F7"/>
+            <TextBlock Grid.Column="1" Text="{Binding Accuracy, StringFormat='Точность: {0:F1}%'}" 
                        HorizontalAlignment="Right" FontSize="22" Foreground="#81C784"/>
         </Grid>
 
         <TextBlock Text="{Binding Status}" Foreground="#BDBDBD" Margin="0,5"/>
     
-        <Button Content="🔄 Рестарт (ESC)" Command="{Binding RestartCommand}" 
+        <Button Content="Начать сначала (ESC)" Command="{Binding RestartCommand}" 
                 HorizontalAlignment="Left" Width="180" Padding="10"/>
     </StackPanel>
 </Window>
