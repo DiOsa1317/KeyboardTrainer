@@ -28,6 +28,13 @@ public partial class MainViewModel : ObservableObject
     [ObservableProperty]
     private string _status = "Кликните в окно и начните печатать...";
     
+    [ObservableProperty]
+    private string _newLessonTitle = String.Empty;
+    [ObservableProperty]
+    private string _newLessonContent = String.Empty;
+    [ObservableProperty]
+    private string _newLessonLanguage = "ru";
+    
     public ObservableCollection<CharItemViewModel> CharacterItems { get; } = new();
     private readonly List<bool?> _inputResults = new();
     
@@ -37,7 +44,6 @@ public partial class MainViewModel : ObservableObject
     {
         try
         {
-            // Пробуем загрузить уроки из репозитория
             var dbLessons = await _repository.GetAllLessonsAsync();
         
             Lessons.Clear();
@@ -53,12 +59,22 @@ public partial class MainViewModel : ObservableObject
 
             StartNewSession(SelectedLesson);
         }
-        catch (System.Exception ex)
+        catch (Exception ex)
         {
-            // Если что-то пойдёт не так (нет таблицы, неверный пароль, нет связи),
-            // текст ошибки запишется в статус-бар внизу окна!
-            Status = $"⚠️ Ошибка подключения к БД: {ex.Message}";
+            Status = $"Ошибка подключения к БД: {ex.Message}";
         }
+    }
+    
+    [RelayCommand]
+    private async Task AddCustomLessonAsync()
+    {
+        if (string.IsNullOrWhiteSpace(NewLessonTitle)
+            || string.IsNullOrWhiteSpace(NewLessonContent))
+            return;
+        await _repository.AddLessonAsync(NewLessonTitle, NewLessonContent, NewLessonLanguage);
+        await InitializeAsync();
+        NewLessonTitle = string.Empty;
+        NewLessonContent = string.Empty;
     }
 
     private void StartNewSession(Lesson? lesson)
@@ -87,8 +103,15 @@ public partial class MainViewModel : ObservableObject
     {
         if (value is not null)
         {
-            StartNewSession(value);
+            _ = LoadAndStartLessonAsync(value);
         }
+    }
+
+    private async Task LoadAndStartLessonAsync(Lesson lesson)
+    {
+        var fullContent = await _repository.GetLessonContentAsync(lesson.Id);
+        lesson.Content =  fullContent;
+        StartNewSession(lesson);
     }
 
     public void ProcessInput(char typedChar)

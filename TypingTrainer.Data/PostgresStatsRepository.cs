@@ -32,8 +32,30 @@ public class PostgresStatsRepository(string connectionString) : IStatsRepository
     public async Task<IReadOnlyList<Lesson>> GetAllLessonsAsync()
     {
         using var connection = new NpgsqlConnection(_connectionString);
-        var sql = "SELECT id, title, content, language FROM lessons ORDER BY id";
+        var sql = "SELECT id, title, language FROM lessons ORDER BY id";
         var lessons = await connection.QueryAsync<Lesson>(sql);
         return lessons.ToList();
+    }
+
+    public async Task<string> GetLessonContentAsync(int id)
+    {
+        using var connection = new NpgsqlConnection(_connectionString);
+        await connection.OpenAsync();
+        var sql = "SELECT content FROM lessons WHERE id = @Id";
+        return await connection.QueryFirstOrDefaultAsync<string>(sql, new { Id = id }) ?? string.Empty;
+    }
+
+    public async Task AddLessonAsync(string title, string content, string language)
+    {
+        using var connection = new NpgsqlConnection(_connectionString);
+        await connection.OpenAsync();
+        
+        var sql = @"
+        INSERT INTO lessons  (title, content, language)
+        VALUES (@Title, @Content, @Language)";
+        
+        await connection
+            .ExecuteAsync(sql, 
+                new {Title = title, Content = content, Language = language});
     }
 }

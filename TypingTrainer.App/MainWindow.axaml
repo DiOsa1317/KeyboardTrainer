@@ -23,6 +23,31 @@
             </ComboBox>
         </StackPanel>
         
+        <StackPanel Margin="20" Spacing="10" Width="400" HorizontalAlignment="Left">
+            <TextBlock Text="Добавить свой текст" FontSize="18" FontWeight="Bold"/>
+    
+            <TextBox Watermark="Название текста (например: Мой код С#)" 
+                     Text="{Binding NewLessonTitle, Mode=TwoWay}"/>
+    
+            <ComboBox SelectedValue="{Binding NewLessonLanguage}" SelectedIndex="0">
+                <ComboBoxItem Content="ru"/>
+                <ComboBoxItem Content="en"/>
+            </ComboBox>
+    
+            <TextBox Watermark="Вставьте или напишите сюда текст тренажёра..." 
+                     Text="{Binding NewLessonContent, Mode=TwoWay}"
+                     AcceptsReturn="True" 
+                     Height="150" 
+                     TextWrapping="Wrap"/>
+    
+            <Button Content="Сохранить текст" 
+                    Command="{Binding AddCustomLessonCommand}"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Center"
+                    Background="#2196F3" 
+                    Foreground="White"/>
+        </StackPanel>
+        
         <TextBlock Text="Наберите текст:" FontSize="14" Foreground="#888888"/>
     
         <Border Background="#1E1E1E" 

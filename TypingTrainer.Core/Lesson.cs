@@ -1,3 +1,9 @@
 namespace TypingTrainer.Core;
 
-public record Lesson(int Id, string Title, string Content, string Language);
+public class Lesson
+{
+    public int Id {get;}
+    public string Title {get;set;}
+    public string Content { get; set; }
+    public string Language;
+};
