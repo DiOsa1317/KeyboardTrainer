@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypingTrainer.Core", "Typin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypingTrainer.Data", "TypingTrainer.Data\TypingTrainer.Data.csproj", "{229BFCFA-ABA2-45ED-806D-7C405E719473}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{8F5E2C15-39AC-4498-B5CF-D1BABACDDE70}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{229BFCFA-ABA2-45ED-806D-7C405E719473}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{229BFCFA-ABA2-45ED-806D-7C405E719473}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{229BFCFA-ABA2-45ED-806D-7C405E719473}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F5E2C15-39AC-4498-B5CF-D1BABACDDE70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F5E2C15-39AC-4498-B5CF-D1BABACDDE70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F5E2C15-39AC-4498-B5CF-D1BABACDDE70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F5E2C15-39AC-4498-B5CF-D1BABACDDE70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
